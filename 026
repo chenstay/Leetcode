@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n=nums.size();
+        if(n==0)return 0;
+        if(n==1)return 1;
+        for(int i=n-1;i>0;i--)
+        {
+            if(nums[i-1]==nums[i])
+            {
+                for(int j=i;j<n-1;j++)swap(nums[j],nums[j+1]);
+            }
+        }
+        int l=0;
+        while(nums[l]<nums[l+1])l++;
+        l++;
+        return l;
+    }
+};
+Note: is Run Code inconsistent with Submit Solution? If you are using global variables or C/C++, check this out. 
+->check this out
+Are you using C or C++? If the answer is yes, chances are your code has bugs in it which cause one of the earlier test cases to trigger an undefined behavior. See this Discuss thread for an example of undefined behavior. These bugs could be hard to debug, so good luck. Or just give up on C/C++ entirely and code in a more predictable language, like Java. Just kidding.
