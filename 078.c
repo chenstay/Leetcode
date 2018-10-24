@@ -13,3 +13,23 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>>result;
+        vector<int>path;
+        DFS(result,path,nums,0);
+        return result;
+    }
+    
+    void DFS(vector<vector<int>>& result, vector<int>& path, vector<int>& nums, int pos){
+        result.push_back(path);
+        for(int i=pos;i<nums.size();i++){
+            path.push_back(nums[i]);
+            DFS(result,path,nums,i+1);
+            path.pop_back();
+        }
+    }
+};
+//ref https://www.cnblogs.com/grandyang/p/4309345.html
