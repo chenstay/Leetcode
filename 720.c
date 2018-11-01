@@ -23,3 +23,19 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    string longestWord(vector<string>& words) {
+        sort(words.begin(),words.end());
+        string res="";
+        unordered_set<string> s;
+        for(auto word:words){
+            if(word.size()==1||s.count(word.substr(0,word.size()-1))){
+                if(word.size()>res.size())res=word;
+                s.insert(word);
+            }
+        }
+        return res;
+    }
+};
