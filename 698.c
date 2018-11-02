@@ -16,7 +16,7 @@ public:
         for(int i=index;i<nums.size();i++){
             if(visited[i])continue;
             visited[i]=true;
-            if(helper(nums,k,target,index+1,curSum+nums[i],visited))return true;
+            if(helper(nums,k,target,i+1,curSum+nums[i],visited))return true;
             visited[i]=false;
         }
         return false;
