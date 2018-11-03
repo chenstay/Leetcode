@@ -18,3 +18,19 @@ public:
     }
 };
 //dfs way exceed time
+
+
+class Solution {
+public:
+    int sumSubseqWidths(vector<int>& A) {
+        sort(A.begin(),A.end());
+        long res=0,c=1,mod=1e9+7;
+        int n=A.size();
+        for(int i=0;i<n;i++,c=(c<<1)%mod){
+            res=(res+A[i]*c-A[n-1-i]*c)%mod;
+        }
+        return (res+mod)%mod;
+    }
+    //res = res + A[i] * 2^(i) - A[i] * 2 ^ (N-1-i)
+    //A[i] * 2 ^ (N-1-i) equals to A[N-1-i] * 2 ^ (i)
+};
