@@ -11,7 +11,7 @@ class Solution {
 public:
     bool isBalanced(TreeNode* root) {
         if(!root)return true;
-        return abs(dep(root->left)-dep(root->right))<=1;
+        return abs(dep(root->left)-dep(root->right))<=1&&isBalanced(root->left)&&isBalanced(root->right);
     }
 private:
     int dep(TreeNode* root){
