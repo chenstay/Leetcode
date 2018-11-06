@@ -23,3 +23,4 @@ public:
         return s_str.empty() ? t : s_str.top();
     }
 };
+//http://www.cnblogs.com/grandyang/p/5849037.html
