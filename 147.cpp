@@ -26,6 +26,22 @@ public:
                 return next;
             }
         }
-        
+    }
+};
+
+class Solution {
+public:
+    ListNode* insertionSortList(ListNode* head) {
+        ListNode* linklist=new ListNode(-1);
+        ListNode* cur=linklist;
+        while(head){
+            cur=linklist;
+            while(cur->next&&cur->next->val<=head->val)cur=cur->next;
+            ListNode* t=head->next;
+            head->next=cur->next;
+            cur->next=head;
+            head=t;
+        }
+        return linklist->next;
     }
 };
