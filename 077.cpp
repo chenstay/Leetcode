@@ -18,3 +18,18 @@ public:
         }
     }
 };
+
+
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        if(k>n||k<0)return {};
+        if(k==0)return {{}};
+        //C(n,k)=C(n-1,k-1)+C(n-1,k)
+        //C(n,k)=n!/((n-k)!*k!)
+        vector<vector<int>> res=combine(n-1,k-1);
+        for(auto &a:res)a.push_back(n);
+        for(auto &a:combine(n-1,k))res.push_back(a);
+        return res;
+    }
+};
