@@ -10,3 +10,18 @@ public:
         return tmp[k-1];
     }
 };
+//heap
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+        priority_queue<int> tmp;
+        for(auto row:matrix){
+            for(auto col:row){
+                tmp.emplace(col);
+                if(tmp.size()>k)tmp.pop();
+            }
+        }
+        return tmp.top();
+    }
+};
+//
