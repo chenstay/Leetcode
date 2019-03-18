@@ -24,3 +24,19 @@ public:
         else return false;
     }
 };
+//KMP
+class Solution {
+public:
+    string shortestPalindrome(string s) {
+        string r = s;
+        reverse(r.begin(), r.end());
+        string p = s + "#" + r;
+        vector<int> next(p.size(), 0);
+        for (int j = 1; j < p.size(); j++) {
+            int k = next[j - 1];
+            while (k > 0 && p[j] != p[k]) k = next[k - 1];
+            next[j] = (k += p[j] == p[k]);
+        }
+        return r.substr(0, s.size() - next.back()) + s;
+    }
+};
