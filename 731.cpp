@@ -21,3 +21,32 @@ private:
  * MyCalendarTwo* obj = new MyCalendarTwo();
  * bool param_1 = obj->book(start,end);
  */
+class MyCalendarTwo {
+public:
+    MyCalendarTwo() {
+        
+    }
+    
+    bool book(int start, int end) {
+        ++nums[start];
+        --nums[end];
+        int cnt=0;
+        for(auto num:nums){
+            cnt+=num.second;
+            if(cnt==3){
+                --nums[start];
+                ++nums[end];
+                return false;
+            }
+        }
+        return true;
+    }
+private:
+    map<int,int> nums;
+};
+
+/**
+ * Your MyCalendarTwo object will be instantiated and called as such:
+ * MyCalendarTwo* obj = new MyCalendarTwo();
+ * bool param_1 = obj->book(start,end);
+ */
