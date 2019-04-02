@@ -7,3 +7,19 @@ public:
         return 2+min(integerReplacement((t+1)/2),integerReplacement((t-1)/2));
     }
 };
+class Solution {
+public:
+    int integerReplacement(int n) {
+        long long t=n;
+        int cnt=0;
+        while(t>1){
+            if(t&1){//n is odd
+                if((t&2)&&(t!=3))t++;//(n+1)%4==0 and n!=3
+                else t--;
+            }
+            else t>>=1;
+            cnt++;
+        }
+        return cnt;
+    }
+};
