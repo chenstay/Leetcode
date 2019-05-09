@@ -16,3 +16,26 @@ public:
         return dp.back();
     }
 };
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> word(wordDict.begin(), wordDict.end());
+        int n=s.size();
+        queue<int> q{{0}};
+        vector<bool> visited(n,0);
+        while(!q.empty()){
+            int tmp=q.front();
+            q.pop();
+            if(!visited[tmp]){
+                for(int i=tmp+1;i<=n;i++){
+                    if(word.count(s.substr(tmp,i-tmp))){
+                        q.push(i);
+                        if(i==n)return true;
+                    }
+                }
+            }
+            visited[tmp]=true;
+        }
+        return false;
+    }
+};
