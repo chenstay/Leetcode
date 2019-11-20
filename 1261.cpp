@@ -16,7 +16,8 @@ public:
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
-            TreeNode* t=q.top();q.pop();
+            TreeNode* t=q.front();q.pop();
+            nums.insert(t->val);
             if(t->left){
                 t->left->val=t->val*2+1;
                 q.push(t->left);
@@ -29,23 +30,11 @@ public:
     }
     
     bool find(int target) {
-        if(!root)return false;
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty()){
-            TreeNode* t=q.top();q.pop();
-            if(t->left){
-                if(t->left->val==target)return true;
-                q.push(t->left);
-            }
-            if(t->right){
-                if(t->right->val==target)return true;
-                q.push(t->right);
-            }
-        }
-        return false;
+        return nums.find(target)!=nums.end();
         
     }
+private:
+    unordered_set<int> nums;
 };
 
 /**
